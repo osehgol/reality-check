@@ -1,0 +1,19 @@
+{
+  "name": "reality-check",
+  "version": "1.0.0",
+  "description": "tweets back \"reality check statements from drone data\" to complaining uber passengers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osehgol/social-hacking.git"
+  },
+  "author": "Osama Sehgol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osehgol/social-hacking/issues"
+  },
+  "homepage": "https://github.com/osehgol/social-hacking#readme"
+}
