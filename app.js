@@ -9,8 +9,8 @@ var httpServer = http.createServer(requestHandler);
 var client = new Twitter({
     consumer_key: Keys.consumer_key,
     consumer_secret: Keys.consumer_secret,
-    token: Keys.access_token_key,
-    token_secret: Keys.access_token_secret
+    access_token_key: Keys.access_token_key,
+    access_token_secret: Keys.access_token_secret
 });
 
 
