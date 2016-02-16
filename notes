@@ -1,0 +1,13 @@
+1. change twitter account
+1.2 make developer account for new handle & update keys.js
+2. Run crontab on server once every hour
+3. auto-exit node script
+4. setup canned responses on gist.github.
+
+=========
+
+2. "you dont have it as bad as the driver"
+3. Canned response is from Google Docs or text file ("https://www.reddit.com/r/firstworldproblems/") 
+4. Gather drone data from an api (http://dronestre.am/) and tweet that (this is looking more likely)
+
+5. Find out how to exit a node script

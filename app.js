@@ -4,6 +4,9 @@ var http = require("http");
 var fs = require('fs'); // Using the filesystem module
 var httpServer = http.createServer(requestHandler);
 
+var request = require('request'); //library
+
+
 
 ////////////////// Step 1 //////////////////////////////////
 var client = new Twitter({
@@ -13,9 +16,39 @@ var client = new Twitter({
     access_token_secret: Keys.access_token_secret
 });
 
+// var gistRawURL = 'https://gist.githubusercontent.com/raw/365370/8c4d2d43d178df44f4c03a7f2ac0ff512853564e';
+// request(gistRawURL, function (error, response, body) {
+//   	if (!error && response.statusCode == 200) {
+//     	var arr = body.split('\n');
+//     	// pick random string from arr here...
+// 	}
+// });
+
+// return;
 
 client.get('search/tweets', {q: 'i hate uber'}, function(error, tweets, response){
+   //console.log(tweets);
    console.log(tweets);
+
+	// for (var i = 0; i < tweets.statuses.length; i++) {
+		var tweet = tweets.statuses[0];
+		// tweet.user.screen_name;
+		// tweet.text;
+		// tweet.id
+	// }
+
+	client.post('statuses/update', {
+		status: '@'+ tweet.user.screen_name + ' pretty sure the driver has it worse',
+		in_reply_to_status_id: tweet.id
+
+	}, function(error, tweet, response){
+	  if (!error) {
+	    console.log(tweet);
+	  } else {
+	  	console.log(error);
+	  }
+	});
+
 });
 
 function requestHandler(req, res) {
@@ -35,4 +68,4 @@ function requestHandler(req, res) {
   	);
 }
 
-httpServer.listen(8080);
+httpServer.listen(8080, console.log("listening to 8080"));
