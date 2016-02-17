@@ -1,5 +1,4 @@
-1. change twitter account
-1.2 make developer account for new handle & update keys.js
+1. Make tweet in reply to tweet
 2. Run crontab on server once every hour
 3. auto-exit node script
 4. setup canned responses on gist.github.
@@ -11,3 +10,9 @@
 4. Gather drone data from an api (http://dronestre.am/) and tweet that (this is looking more likely)
 
 5. Find out how to exit a node script
+
+Problems, 
+* Same tweet can't be sent twice (diversification)
+* reply was initially not in direct response to the uber tweet
+* tweets can be out of context (some people are just venting on how much  money they've spent)
+* 

@@ -38,8 +38,7 @@ client.get('search/tweets', {q: 'i hate uber'}, function(error, tweets, response
 	// }
 
 	client.post('statuses/update', {
-		status: '@'+ tweet.user.screen_name + ' pretty sure the driver has it worse',
-		in_reply_to_status_id: tweet.id
+		status: '@'+ tweet.user.screen_name + ' pretty sure the driver had it worse', in_reply_to_status_id: tweet.in_reply_to_status_id
 
 	}, function(error, tweet, response){
 	  if (!error) {
