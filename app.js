@@ -29,6 +29,7 @@ request(gistRawURL, function (error, response, body) {
 	}
 });
 
+//arr.map lets you manipulate an array https://egghead.io/lessons/javascript-chaining-the-array-map-and-filter-methods
 //arr.map(function(val{
 //		return val + " is a number"
 //}));
@@ -44,7 +45,7 @@ function makeTweet(responseText) {
 	//do the same for q: "i hate uber" as you did for meantweet gist
 	//[{"q": "i hate uber", "responses": ["response one", "response two"]}]
 
-	client.get('search/tweets', {q: '"i hate uber"'}, function(error, tweets, response){
+	client.get('search/tweets', {q: 'i hate uber'}, function(error, tweets, response){
 	   //console.log(tweets);
 	   console.log(tweets);
 
