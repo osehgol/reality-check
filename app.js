@@ -2,8 +2,7 @@ var Twitter = require('twitter');// Step 1
 var Keys = require('./keys.js')(); // Step 1
 var http = require("http");
 var fs = require('fs'); // Using the filesystem module
-
-var request = require('request'); //library
+var request = require('request'); //library https://github.com/request/request
 
 
 
@@ -15,6 +14,8 @@ var client = new Twitter({
     access_token_secret: Keys.access_token_secret
 });
 
+////////////////// Step 2 /////////////////////////////////
+///https://github.com/request/request
 var gistRawURL = 'https://gist.githubusercontent.com/osehgol/0e751856cc975f17aa87/raw';
 request(gistRawURL, function (error, response, body) {
   	if (!error && response.statusCode == 200) {
@@ -40,15 +41,12 @@ request(gistRawURL, function (error, response, body) {
 //			newArray.push(arr[i]);
 //}
 
+//BELOW:do the same for q: "i hate uber" as you did for meantweet gist
+//[{"q": "i hate uber", "responses": ["response one", "response two"]}]
+
 function makeTweet(responseText) {
- 
-	//do the same for q: "i hate uber" as you did for meantweet gist
-	//[{"q": "i hate uber", "responses": ["response one", "response two"]}]
-
 	client.get('search/tweets', {q: 'i hate uber'}, function(error, tweets, response){
-	   //console.log(tweets);
-	   console.log(tweets);
-
+	console.log(tweets);
 		// for (var i = 0; i < tweets.statuses.length; i++) {
 			var tweet = tweets.statuses[Math.floor(Math.random()*tweets.statuses.length];
 			// tweet.user.screen_name;
