@@ -15,38 +15,60 @@ var client = new Twitter({
     access_token_secret: Keys.access_token_secret
 });
 
-// var gistRawURL = 'https://gist.github.com/osehgol/0e751856cc975f17aa87';
-// request(gistRawURL, function (error, response, body) {
-//   	if (!error && response.statusCode == 200) {
-//     	var arr = body.split('\n');
-//     	// pick random string from arr here...
-// 	}
-// });
-
-// return;
-
-client.get('search/tweets', {q: '"i hate uber"'}, function(error, tweets, response){
-   //console.log(tweets);
-   console.log(tweets);
-
-	// for (var i = 0; i < tweets.statuses.length; i++) {
-		var tweet = tweets.statuses[0];
-		// tweet.user.screen_name;
-		// tweet.text;
-		// tweet.id
-	// }
-
-	client.post('statuses/update', {
-		status: '@'+ tweet.user.screen_name + ' pretty sure the driver had it worse', in_reply_to_status_id: tweet.in_reply_to_status_id
-
-	}, function(error, tweet, response){
-	  if (!error) {
-	    console.log(tweet);
-	  } else {
-	  	console.log(error);
-	  }
-	});
-
+var gistRawURL = 'https://gist.githubusercontent.com/osehgol/0e751856cc975f17aa87/raw';
+request(gistRawURL, function (error, response, body) {
+  	if (!error && response.statusCode == 200) {
+    	var arr = body.split('\n');
+    	console.log(arr);
+    	arr = arr.filter(function(val){
+    		return val != "";
+    	});
+    	var item = " " + arr[Math.floor(Math.random()*arr.length)];
+    	makeTweet(item);
+    	// pick random string from arr here...
+	}
 });
 
+//arr.map(function(val{
+//		return val + " is a number"
+//}));
+
+//var newArray =[];
+//for (var i = 0; i < arr.length; i++){
+//		if(arr[i] != "";
+//			newArray.push(arr[i]);
+//}
+
+function makeTweet(responseText) {
+ 
+	//do the same for q: "i hate uber" as you did for meantweet gist
+	//[{"q": "i hate uber", "responses": ["response one", "response two"]}]
+
+	client.get('search/tweets', {q: '"i hate uber"'}, function(error, tweets, response){
+	   //console.log(tweets);
+	   console.log(tweets);
+
+		// for (var i = 0; i < tweets.statuses.length; i++) {
+			var tweet = tweets.statuses[Math.floor(Math.random()*tweets.statuses.length];
+			// tweet.user.screen_name;
+			// tweet.text;
+			// tweet.id
+		// }
+
+		client.post('statuses/update', {
+			status: '@'+ tweet.user.screen_name + responseText, in_reply_to_status_id: tweet.in_reply_to_status_id
+
+		}, function(error, tweet, response){
+		  if (!error) {
+		    console.log(tweet);
+		  } else {
+		  	console.log(error);
+		  }
+		});
+
+	});
+
+}
+
+// makeTweet();
 
