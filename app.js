@@ -16,7 +16,7 @@ var client = new Twitter({
 
 ////////////////// Step 2 /////////////////////////////////
 ///https://github.com/request/request
-var gistRawURL = 'https://gist.githubusercontent.com/osehgol/0e751856cc975f17aa87/raw';
+var gistRawURL = 'https://gist.github.com/osehgol/da5293a310b0eb3f0c8e';
 request(gistRawURL, function (error, response, body) {
   	if (!error && response.statusCode == 200) {
     	var arr = body.split('\n');
@@ -45,10 +45,11 @@ request(gistRawURL, function (error, response, body) {
 //[{"q": "i hate uber", "responses": ["response one", "response two"]}]
 
 function makeTweet(responseText) {
-	client.get('search/tweets', {q: 'i hate uber'}, function(error, tweets, response){
+	//client.get('search/tweets', {gistRawURL[0].q.responses[0]}, function(error, tweets, response){ gives me an error
+	client.get('search/tweets', {q:"i hate uber"}, function(error, tweets, response){
 	console.log(tweets);
 		// for (var i = 0; i < tweets.statuses.length; i++) {
-			var tweet = tweets.statuses[Math.floor(Math.random()*tweets.statuses.length];
+			var tweet = tweets.statuses[Math.floor(Math.random()*tweets.statuses.length)];
 			// tweet.user.screen_name;
 			// tweet.text;
 			// tweet.id
