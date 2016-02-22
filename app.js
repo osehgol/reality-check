@@ -16,7 +16,7 @@ var client = new Twitter({
     access_token_secret: Keys.access_token_secret
 });
 
-// var gistRawURL = 'https://gist.githubusercontent.com/raw/365370/8c4d2d43d178df44f4c03a7f2ac0ff512853564e';
+// var gistRawURL = 'https://gist.github.com/osehgol/0e751856cc975f17aa87';
 // request(gistRawURL, function (error, response, body) {
 //   	if (!error && response.statusCode == 200) {
 //     	var arr = body.split('\n');
