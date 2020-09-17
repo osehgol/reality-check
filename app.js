@@ -16,15 +16,15 @@ var client = new Twitter({
 
 ////////////////// Step 2 /////////////////////////////////
 ///https://github.com/request/request
-var gistRawURL = 'https://gist.github.com/osehgol/da5293a310b0eb3f0c8e';
+var gistRawURL = 'https://gist.githubusercontent.com/osehgol/0e751856cc975f17aa87/raw/035ae4f6e6592fa2042843a19256207c7c797e46/MeanTweets';
 request(gistRawURL, function (error, response, body) {
   	if (!error && response.statusCode == 200) {
-    	var arr = body.split('\n');
-    	console.log(arr);
-    	arr = arr.filter(function(val){
+			var arr = body.split('\n');
+    	arr = arr.filter(function(val){				
     		return val != "";
     	});
-    	var item = " " + arr[Math.floor(Math.random()*arr.length)];
+			var item = " " + arr[Math.floor(Math.random()*arr.length)];
+			console.log(item)
     	makeTweet(item);
     	// pick random string from arr here...
 	}
@@ -47,16 +47,16 @@ request(gistRawURL, function (error, response, body) {
 function makeTweet(responseText) {
 	//client.get('search/tweets', {gistRawURL[0].q.responses[0]}, function(error, tweets, response){ gives me an error
 	client.get('search/tweets', {q:"i hate uber"}, function(error, tweets, response){
-	console.log(tweets);
+	// console.log(tweets);
 		// for (var i = 0; i < tweets.statuses.length; i++) {
 			var tweet = tweets.statuses[Math.floor(Math.random()*tweets.statuses.length)];
 			// tweet.user.screen_name;
 			// tweet.text;
 			// tweet.id
 		// }
-
+		// console.log(tweet.id)
 		client.post('statuses/update', {
-			status: '@'+ tweet.user.screen_name + responseText, in_reply_to_status_id: tweet.in_reply_to_status_id
+			status: '@'+ tweet.user.screen_name + responseText, in_reply_to_status_id: tweet.id_str
 
 		}, function(error, tweet, response){
 		  if (!error) {
